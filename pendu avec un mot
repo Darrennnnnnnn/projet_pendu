@@ -1,0 +1,18 @@
+"""PENDU AVEC UN MOT"""
+
+import random
+import words
+
+
+
+# choix aléatoire d'un mot dans la liste
+mot_a_deviner = random.choice(words)
+
+# demande de deviner le mot
+devine_mot = input("Devinez le mot: ")
+
+# vérification si le mot est correct
+if devine_mot == mot_a_deviner:
+    print("Félicitations! Vous avez deviné le mot", mot_a_deviner)
+else:
+    print("Dommage! Le mot était", mot_a_deviner)
