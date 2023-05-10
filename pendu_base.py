@@ -12,13 +12,13 @@ def get_valid_word(words):
     return word.upper()
 
 
-def hangman():
+def hangman(lives = 7):
     word = get_valid_word(words)
     word_letters = set(word)  # letters in the word
     alphabet = set(string.ascii_uppercase)
     used_letters = set()  # what the user has guessed
 
-    lives = 7
+    
 
     # getting user input
     while len(word_letters) > 0 and lives > 0:
@@ -54,6 +54,17 @@ def hangman():
         print('You died, sorry. The word was', word)
     else:
         print('YAY! You guessed the word', word, '!!')
+        
+def easymode():
+    return hangman(lives = 10)
+#faire un dessin de pendu amélioré pour un jeu à 10 vies
+#trier les mots pour exclure les mote > 5 lettres
+
+
+def hardmode():
+    return hangman(lives = 4)
+#faire un dessin de pendu réduit pour un jeu à 4 vies
+#trier les mots pour exclure les mots < 5 lettres
 
 
 if __name__ == '__main__':
