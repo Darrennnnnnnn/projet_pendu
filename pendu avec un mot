@@ -26,5 +26,8 @@ def devine_mot(nombre_lettres, mots):
         lettres_incorrectes = set(mot_a_deviner).difference(set(mot))
         return f"Le mot choisi était {mot}. Vous avez trouvé {len(lettres_correctes)} lettres correctes ({', '.join(lettres_correctes)}) et {len(lettres_incorrectes)} lettres incorrectes ({', '.join(lettres_incorrectes)})."
 
-resultat = devine_mot(nombre_lettres, mots)
-print(resultat)
+
+
+#pour tester cette fonction:
+#resultat = devine_mot(nombre_lettres, mots)
+#print(resultat)
