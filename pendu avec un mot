@@ -32,8 +32,12 @@ def devine_mot(nombre_lettres, mots):
     mot_a_deviner = input(f"Entrez un mot de {len(mot)} lettres : ")
     
     # Vérification du mot
-    if mot_a_deviner == mot:
+    if len(mot_a_deviner) != len(mot):
+        return f"Le mot à deviner a {len(mot)} lettres. Veuillez entrer un mot de même longueur."
+
+    elif mot_a_deviner == mot:
         return "Bravo ! Vous avez deviné le mot."
+
     else:
         # Séparation des lettres correctes et incorrectes entre le mot saisi et le mot choisi
         lettres_correctes = set(mot_a_deviner).intersection(set(mot))
