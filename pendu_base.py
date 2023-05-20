@@ -12,7 +12,7 @@ def get_valid_word(words):
     return word.upper()
 
 
-def hangman(lives = 7):
+def hangman(lives = 7, lives_visuel = lives_visual_dict):
     word = get_valid_word(words)
     word_letters = set(word)  # letters in the word
     alphabet = set(string.ascii_uppercase)
@@ -28,7 +28,7 @@ def hangman(lives = 7):
 
         # what current word is (ie W - R D)
         word_list = [letter if letter in used_letters else '-' for letter in word]
-        print(lives_visual_dict[lives])
+        print(lives_visual[lives])
         print('Current word: ', ' '.join(word_list))
 
         user_letter = input('Guess a letter: ').upper()
@@ -50,19 +50,19 @@ def hangman(lives = 7):
 
     # gets here when len(word_letters) == 0 OR when lives == 0
     if lives == 0:
-        print(lives_visual_dict[lives])
+        print(lives_visual[lives])
         print('You died, sorry. The word was', word)
     else:
         print('YAY! You guessed the word', word, '!!')
         
 def easymode():
-    return hangman(lives = 10)
-#faire un dessin de pendu amélioré pour un jeu à 10 vies
-#trier les mots pour exclure les mote > 5 lettres
+    return hangman(lives = 10, lives_visual = lives_visual_dict3)
+#faire un dessin de pendu amélioré pour un jeu à 10 vies (+3 dessins)
+#trier les mots pour exclure les mots > 5 lettres
 
 
 def hardmode():
-    return hangman(lives = 4)
+    return hangman(lives = 4, lives_visual = lives_visual_dict2)
 #faire un dessin de pendu réduit pour un jeu à 4 vies
 #trier les mots pour exclure les mots < 5 lettres
 
