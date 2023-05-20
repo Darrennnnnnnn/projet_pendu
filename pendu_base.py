@@ -12,7 +12,7 @@ def get_valid_word(words):
     return word.upper()
 
 
-def hangman(lives = 7, lives_visuel = lives_visual_dict):
+def hangman(lives = 7, lives_visual = lives_visual_dict):
     word = get_valid_word(words)
     word_letters = set(word)  # letters in the word
     alphabet = set(string.ascii_uppercase)
@@ -57,15 +57,17 @@ def hangman(lives = 7, lives_visuel = lives_visual_dict):
         
 def easymode():
     return hangman(lives = 10, lives_visual = lives_visual_dict3)
+    filtered_words = [word for word in words if len(word) < 5]
 #faire un dessin de pendu amélioré pour un jeu à 10 vies (+3 dessins)
 #trier les mots pour exclure les mots > 5 lettres
 
 
 def hardmode():
     return hangman(lives = 4, lives_visual = lives_visual_dict2)
+    filtered_words = [word for word in words if len(word) > 5]
 #faire un dessin de pendu réduit pour un jeu à 4 vies
 #trier les mots pour exclure les mots < 5 lettres
 
-
+    
 if __name__ == '__main__':
     hangman()
