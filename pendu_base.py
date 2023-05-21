@@ -2,7 +2,7 @@ import random
 from words import words
 from hangman_visual import lives_visual_dict
 import string
-
+question = "Welcome to the hangman game. \n please, select a gamemode :\n Easy : 1\n normal: 2\n hard : 3 \n oneshot : 4\n:"
 
 def get_valid_word(words):
     word = random.choice(words)  # randomly chooses something from the list
@@ -54,7 +54,54 @@ def hangman(lives = 7, lives_visual = lives_visual_dict):
         print('You died, sorry. The word was', word)
     else:
         print('YAY! You guessed the word', word, '!!')
-        
+
+def oneshot():
+    
+    nombre_lettres = 2
+
+    def devine_mot(nombre_lettres, mots):
+    
+    
+        """Fonction pour deviner un mot en une seule tentative
+        avec des indices"""
+    
+    
+    # Choix aléatoire d'un mot dans la liste 
+        word = random.choice(words)
+    
+    # Liste de lettres uniques dans le mot choisi 
+        lettres = list(set(word))
+    
+    
+    # Lettres à afficher pour la devinette et ajout de tirets pour les autres lettres
+        indices = lettres[:nombre_lettres]
+        indices.extend(['-']*(len(word)-nombre_lettres))
+        indices = ' '.join(indices)
+    
+    # Demande d'un mot de même longueur que le mot à deviner
+        mot_a_deviner = input(f"Entrez un mot de {len(word)} lettres : ")
+    
+    # Vérification du mot
+        if len(mot_a_deviner) != len(word):
+            return f"Le mot à deviner a {len(word)} lettres. Veuillez entrer un mot de même longueur."
+
+        elif mot_a_deviner == word:
+            return "Bravo ! Vous avez deviné le mot."
+
+        else:
+        # Séparation des lettres correctes et incorrectes entre le mot saisi et le mot choisi
+            lettres_correctes = set(mot_a_deviner).intersection(set(word))
+            lettres_incorrectes = set(mot_a_deviner).difference(set(word))
+        # Affichage des résultats
+            return f"Le mot choisi était {word}. Vous avez trouvé {len(lettres_correctes)} lettres correctes ({', '.join(lettres_correctes)}) et {len(lettres_incorrectes)} lettres incorrectes ({', '.join(lettres_incorrectes)})."
+
+# Appel de la fonction pour deviner un mot
+    resultat = devine_mot(nombre_lettres, words)
+
+# Affichage du résultat
+    print(resultat)
+
+
 def easymode():
     return hangman(lives = 10, lives_visual = lives_visual_dict3)
     filtered_words = [word for word in words if len(word) < 5]
@@ -70,4 +117,20 @@ def hardmode():
 
     
 if __name__ == '__main__':
-    hangman()
+    while True:
+        try:
+            reponse = int(input(question))
+        except ValueError:
+            print("Please, answer the question by choosing the number associated with the gamemode")
+        if reponse == 1:
+            easymode()
+        elif reponse == 2:
+            hangman()
+        elif reponse == 3:
+            hardmode()
+        elif reponse == 4:
+            oneshot()
+            break
+        else:
+            print("Invalid gamemode number. Please try again.")
+        
