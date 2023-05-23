@@ -1,6 +1,8 @@
 import random
 from words import words
 from hangman_visual import lives_visual_dict
+from hangman_visual_easy import lives_visual_dict3
+from hangman_visual_hard import lives_visual_dict2
 import string
 question = "Welcome to the hangman game. \n please, select a gamemode :\n Easy : 1\n normal: 2\n hard : 3 \n oneshot : 4\n:"
 
